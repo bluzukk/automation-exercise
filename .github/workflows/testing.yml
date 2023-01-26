@@ -2,6 +2,7 @@ name: Exercise Workflow
 
 on: push
 
+
 jobs:
   style_check:
     runs-on: ubuntu-latest
