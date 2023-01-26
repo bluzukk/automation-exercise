@@ -1,4 +1,4 @@
-name: Exercise Workflow
+name: SSE CI/CD
 
 on: push
 
