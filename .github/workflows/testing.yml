@@ -9,10 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+
       - name: "Install style checker"
         run: pip install black
       - name: "Run style check"
         run: black --check .
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -29,16 +31,23 @@ jobs:
         run: pip install coverage
       - name: "Run coverage"
         run: coverage run -m pytest
-      - name: "Upload artifact"
+      - name: "Upload coverage report (artifact)"
         uses: actions/upload-artifact@v2
         with:
           name: coverage
           path: .coverage
           retention-days: 1
-  # build:
-  #   needs: style
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     PROJECT_NAME: "Automation Lecture"
-  #   steps:
+
+  coverage_report:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_NAME: "Automation Lecture"
+    steps:
+      - name: "Download coverage report (artifact)"
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+
+      - name: "Create coverage report"
+        run: coverage report .coverage
 
