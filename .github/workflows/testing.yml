@@ -30,11 +30,11 @@ jobs:
       - name: "Run coverage"
         run: coverage run -m pytest
       - name: "Upload artifact"
-          uses: actions/upload-artifact@v2
-           with:
-            name: coverage
-            path: .coverage
-            retention-days: 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: .coverage
+          retention-days: 1
   # build:
   #   needs: style
   #   runs-on: ubuntu-latest
