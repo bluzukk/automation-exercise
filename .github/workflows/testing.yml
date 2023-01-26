@@ -58,4 +58,10 @@ jobs:
       - name: "Create coverage report (XML)"
         run: coverage xml
 
+      - name: "Upload coverage report (XML) (artifact)"
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-xml
+          path: coverage.xml
+          retention-days: 14
 
