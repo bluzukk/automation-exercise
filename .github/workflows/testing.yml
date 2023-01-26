@@ -53,5 +53,8 @@ jobs:
       - name: "Install coverage"
         run: pip install coverage
       - name: "Create coverage report"
-        run: coverage report .coverage
+        run: coverage report
+      - name: "Create coverage report (XML)"
+        run: coverage xml
+
 
